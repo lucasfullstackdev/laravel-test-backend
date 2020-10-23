@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::prefix('/uf')->group( realpath( __DIR__ . '/api/uf.php' ) );
-Route::prefix('/properties')->group( realpath( __DIR__ . '/api/propriedade.php' ) );
-Route::prefix('/properties/status')->group( realpath( __DIR__ . '/api/status-propriedade.php' ) );
-Route::prefix('/contracts')->group( realpath( __DIR__ . '/api/contratos.php' ) );
+Route::prefix('/uf')->group(realpath(__DIR__ . '/api/uf.php'));
+Route::prefix('/properties')->group(realpath(__DIR__ . '/api/propriedade.php'));
+Route::prefix('/properties/status')->group(realpath(__DIR__ . '/api/status-propriedade.php'));
+Route::prefix('/contracts')->group(realpath(__DIR__ . '/api/contratos.php'));
