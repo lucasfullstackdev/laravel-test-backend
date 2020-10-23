@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Contrato;
+use Illuminate\Http\Request;
 use Repositories\ContratoRepository;
 
 class ContratoController extends Controller
@@ -31,7 +31,7 @@ class ContratoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Contrato $request)
+    public function store(Request $request)
     {
         return $this->contratoRepository->create($request->all());
     }
@@ -54,7 +54,7 @@ class ContratoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Contrato $request, $id)
+    public function update(Request $request, $id)
     {
         return $this->contratoRepository->update($request->all(), $id);
     }

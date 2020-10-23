@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Propriedade;
+use Illuminate\Http\Request;
 use Repositories\PropriedadeRepository;
 
 class PropriedadeController extends Controller
@@ -31,7 +31,7 @@ class PropriedadeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Propriedade $request)
+    public function store(Request $request)
     {
         return $this->propriedadeRepository->create($request->all());
     }
@@ -48,13 +48,24 @@ class PropriedadeController extends Controller
     }
 
     /**
+     * Exibe o contrato da propriedade (imóvel)
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showContract($id)
+    {
+        return $this->propriedadeRepository->find($id)->contract;
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Propriedade $request, $id)
+    public function update(Request $request, $id)
     {
         return $this->propriedadeRepository->update($request->all(), $id);
     }
