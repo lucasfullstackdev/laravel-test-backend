@@ -2,7 +2,7 @@
 
 namespace Repositories;
 
-final class StatusPropriedadeRepository extends BaseRepository
+final class StatusPropriedadeRepository extends BaseRepository implements RepositoryInterface
 {
     protected $class = \App\Models\StatusPropriedade::class;
 }
