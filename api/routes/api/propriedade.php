@@ -12,5 +12,4 @@ Route::put('/{id}', [PropriedadeController::class, 'update'])->where('id', '[0-9
 Route::delete('/{id}', [PropriedadeController::class, 'destroy'])->where('id', '[0-9]+');
 
 Route::post('/{id}/contracts', [ContratoController::class, 'store'])->where('id', '[0-9]+');
-Route::get('/{id}/contracts', [ContratoController::class, 'show'])->where('id', '[0-9]+');
-
+Route::get('/{id}/contracts', [PropriedadeController::class, 'showContract'])->where('id', '[0-9]+');
