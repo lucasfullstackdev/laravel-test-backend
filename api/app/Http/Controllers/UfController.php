@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Uf;
+use Illuminate\Http\Request;
 use Repositories\UfRepository;
 
 class UfController extends Controller
@@ -24,15 +24,13 @@ class UfController extends Controller
     {
         return $this->ufRepository->all();
     }
-
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Uf $request)
+    public function store(Request $request)
     {
         return $this->ufRepository->create($request->all());
     }
@@ -55,7 +53,7 @@ class UfController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Uf $request, $id)
+    public function update(Request $request, $id)
     {
         return $this->ufRepository->update($request->all(), $id);
     }

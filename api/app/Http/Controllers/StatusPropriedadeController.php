@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StatusPropriedade;
+use Illuminate\Http\Request;
 use Repositories\StatusPropriedadeRepository;
 
 class StatusPropriedadeController extends Controller
@@ -31,7 +31,7 @@ class StatusPropriedadeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StatusPropriedade $request)
+    public function store(Request $request)
     {
         return $this->statusPropriedadeRepository->create($request->all());
     }
@@ -54,7 +54,7 @@ class StatusPropriedadeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StatusPropriedade $request, $id)
+    public function update(Request $request, $id)
     {
         return $this->statusPropriedadeRepository->update($request->all(), $id);
     }
