@@ -17,8 +17,8 @@ class CreateContratosTable extends Migration
             $table->increments('id');
 
             // Propriedade (imóvel)
-            $table->integer('id_uf')->unsigned();
-            $table->foreign('id_uf')->references('id')->on('uf');
+            $table->integer('id_propriedade')->unsigned();
+            $table->foreign('id_propriedade')->references('id')->on('propriedades');
 
             // Dados do Contratante
             $table->enum('tipo_pessoa', ['Pessoa Física', 'Pessoa Jurídica']);
