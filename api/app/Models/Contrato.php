@@ -12,4 +12,9 @@ class Contrato extends BaseModel
         'email_contratante',
         'nome_contratante'
     ];
+
+    public function propriedade()
+    {
+        return $this->belongsTo(Propriedade::class, 'id_propriedade');
+    }
 }

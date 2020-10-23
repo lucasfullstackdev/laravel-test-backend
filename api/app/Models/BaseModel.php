@@ -13,6 +13,7 @@ abstract class BaseModel extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $primaryKey = 'id';
     protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
 
     public final function getCreatedAtAttribute($created_at)

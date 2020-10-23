@@ -14,4 +14,9 @@ class Propriedade extends BaseModel
         'cidade',
         'id_uf'
     ];
+
+    public function uf()
+    {
+        return $this->belongsTo(Uf::class, 'id_uf');
+    }
 }
