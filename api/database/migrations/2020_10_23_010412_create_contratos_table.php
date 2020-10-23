@@ -23,8 +23,8 @@ class CreateContratosTable extends Migration
             // Dados do Contratante
             $table->enum('tipo_pessoa', ['Pessoa Física', 'Pessoa Jurídica']);
             $table->string('documento', 14);
-            $table->string('email_contratante');
-            $table->string('nome_contratante');
+            $table->string('email_contratante', 60);
+            $table->string('nome_contratante', 60);
 
             $table->timestamps();
             $table->softDeletes();
