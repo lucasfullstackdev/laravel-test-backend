@@ -6,7 +6,7 @@ class Contrato extends BaseModel
 {
     protected $table = 'contratos';
     protected $fillable = [
-        'id_uf',
+        'id_propriedade',
         'tipo_pessoa',
         'documento',
         'email_contratante',
