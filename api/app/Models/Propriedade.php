@@ -20,4 +20,9 @@ class Propriedade extends BaseModel
     {
         return $this->belongsTo(Uf::class, 'id_uf');
     }
+
+    public function contract()
+    {
+        return $this->hasOne(Contrato::class, 'id_propriedade');
+    }
 }
