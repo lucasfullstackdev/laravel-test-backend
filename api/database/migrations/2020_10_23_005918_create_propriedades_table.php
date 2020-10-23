@@ -27,6 +27,10 @@ class CreatePropriedadesTable extends Migration
             $table->integer('id_uf')->unsigned();
             $table->foreign('id_uf')->references('id')->on('uf');
 
+            // Status da propriedade (imóvel)
+            $table->integer('id_status_propriedade')->unsigned();
+            $table->foreign('id_status_propriedade')->references('id')->on('status_propriedade');
+
             $table->timestamps();
             $table->softDeletes();
         });
