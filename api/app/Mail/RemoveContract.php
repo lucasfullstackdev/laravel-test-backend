@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NewProperty extends Mailable
+class RemoveContract extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -17,7 +17,9 @@ class NewProperty extends Mailable
     public $bairro;
     public $cidade;
     public $uf;
-    public $created_at;
+    public $deleted_at;
+
+    public $contract;
 
     /**
      * Create a new message instance.
@@ -32,7 +34,9 @@ class NewProperty extends Mailable
         $this->bairro = $propriedade['bairro'];
         $this->cidade = $propriedade['cidade'];
         $this->uf = $propriedade['uf']['nome'];
-        $this->created_at = $propriedade['created_at'];
+        $this->deleted_at = $propriedade['deleted_at'];
+
+        $this->contract = $propriedade['contract'];
     }
 
     /**
@@ -42,6 +46,6 @@ class NewProperty extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.new-property');
+        return $this->markdown('emails.remove-contract');
     }
 }
