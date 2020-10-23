@@ -12,7 +12,8 @@ class Propriedade extends BaseModel
         'numero',
         'bairro',
         'cidade',
-        'id_uf'
+        'id_uf',
+        'id_status_propriedade'
     ];
 
     public function uf()

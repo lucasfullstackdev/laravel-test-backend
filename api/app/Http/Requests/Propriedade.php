@@ -30,7 +30,8 @@ class Propriedade extends FormRequest
             'complemento' => 'nullable|max:60',
             'bairro' => 'required|string|max:30',
             'cidade' => 'required|string|max:60',
-            'id_uf' => 'required|exists:uf,id'
+            'id_uf' => 'required|exists:uf,id',
+            'id_status_propriedade' => 'required|exists:status_propriedade,id'
         ];
     }
 }
