@@ -31,9 +31,10 @@ class ContratoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        return $this->contratoRepository->create($request->all());
+        $data = array_merge($request->all(), ['id_propriedade' => $id]);
+        return $this->contratoRepository->create($data);
     }
 
     /**
