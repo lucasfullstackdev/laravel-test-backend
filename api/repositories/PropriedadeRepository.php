@@ -5,6 +5,8 @@ namespace Repositories;
 final class PropriedadeRepository extends BaseRepository implements RepositoryInterface
 {
     protected $class = \App\Models\Propriedade::class;
+    protected $storeMailable = '\App\Mail\NewProperty';
+    protected $removeMailable = '\App\Mail\RemoveProperty';
 
     protected $storeRules = [
         'email_proprietario' => 'required|email|max:60',
