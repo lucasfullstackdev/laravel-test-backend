@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UfSeeder::class,
             StatusPropriedadeSeeder::class,
+            PropriedadeSeeder::class
         ]);
     }
 }

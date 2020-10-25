@@ -17,7 +17,8 @@ class CreateUfTable extends Migration
             $table->increments('id');
 
             $table->string('nome', 19)->unique();
-            $table->string('sigla', 2)->unique();
+            $table->string('sigla', 2);
+            // $table->string('sigla', 2)->unique(); Desabilitado para fins de teste
 
             $table->timestamps();
             $table->softDeletes();
