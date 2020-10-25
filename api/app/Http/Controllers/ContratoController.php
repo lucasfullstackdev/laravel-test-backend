@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Repositories\ContratoRepository;
 
-class ContratoController extends Controller
+class ContratoController extends Controller implements ControllerInterface
 {
     /** @var ContratoRepository */
     protected $contratoRepository;
@@ -23,6 +23,16 @@ class ContratoController extends Controller
     public function index()
     {
         return $this->contratoRepository->all();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        return $this->contratoRepository->paginate();
     }
 
     /**

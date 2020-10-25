@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Repositories\PropriedadeRepository;
 
-class PropriedadeController extends Controller
+class PropriedadeController extends Controller implements ControllerInterface
 {
     /** @var PropriedadeRepository */
     protected $propriedadeRepository;
@@ -26,6 +26,15 @@ class PropriedadeController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        return $this->propriedadeRepository->paginate();
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,17 +54,6 @@ class PropriedadeController extends Controller
     public function show($id)
     {
         return $this->propriedadeRepository->find($id);
-    }
-
-    /**
-     * Exibe o contrato da propriedade (imóvel)
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function showContract($id)
-    {
-        return $this->propriedadeRepository->find($id)->contract;
     }
 
     /**

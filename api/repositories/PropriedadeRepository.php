@@ -5,7 +5,7 @@ namespace Repositories;
 final class PropriedadeRepository extends BaseRepository implements RepositoryInterface
 {
     protected $class = \App\Models\Propriedade::class;
-
+    protected $with = ['uf', 'contrato', 'status'];
     protected $storeRules = [
         'email_proprietario' => 'required|email|max:60',
         'logradouro' => 'required|string|max:100',
