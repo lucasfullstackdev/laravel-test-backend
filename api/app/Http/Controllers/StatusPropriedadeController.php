@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Repositories\StatusPropriedadeRepository;
 
-class StatusPropriedadeController extends Controller
+class StatusPropriedadeController extends Controller implements ControllerInterface
 {
     /** @var StatusPropriedadeRepository */
     protected $statusPropriedadeRepository;
@@ -25,6 +25,16 @@ class StatusPropriedadeController extends Controller
         return $this->statusPropriedadeRepository->all();
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        return $this->statusPropriedadeRepository->paginate();
+    }
+    
     /**
      * Store a newly created resource in storage.
      *

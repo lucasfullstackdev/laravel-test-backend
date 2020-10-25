@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Repositories\UfRepository;
 
-class UfController extends Controller
+class UfController extends Controller implements ControllerInterface
 {
     /** @var UfRepository */
     protected $ufRepository;
@@ -24,6 +24,17 @@ class UfController extends Controller
     {
         return $this->ufRepository->all();
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function paginate()
+    {
+        return $this->ufRepository->paginate();
+    }
+
     /**
      * Store a newly created resource in storage.
      *

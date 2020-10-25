@@ -7,7 +7,7 @@ use Illuminate\Validation\Rule;
 final class ContratoRepository extends BaseRepository implements RepositoryInterface
 {
     protected $class = \App\Models\Contrato::class;
-
+    protected $with = ['propriedade'];
     public function __construct()
     {
         $storeRules = [

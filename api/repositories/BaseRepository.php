@@ -10,27 +10,70 @@ use Illuminate\Support\Facades\Validator;
 abstract class BaseRepository
 {
     protected $storeRules;
+    protected $with;
 
-    public final function all()
+    /**
+     * Paginando entre os recursos
+     *
+     * @return Repositories\Response
+     */
+    public final function paginate()
     {
         try {
-            $all = $this->class::all();
+            if (isset($this->with)) {
+                $this->class = $this->class::with($this->with);
+            }
+            
+            $all = gettype($this->class) == 'string' ? $this->class::paginate() : $this->class->paginate();
             return Response::success($all, 'Registro encontrado!');
         } catch (\Throwable $th) {
             return Response::error($th, $th->getMessage());
         }
     }
 
+    /**
+     * Retornando todos os recursos
+     *
+     * @return \Repositories\Response
+     */
+    public final function all()
+    {
+        try {
+            if (isset($this->with)) {
+                $this->class = $this->class::with($this->with);
+            }
+
+            $all = gettype($this->class) == 'string' ? $this->class::get() : $this->class->get();
+            return Response::success($all, 'Registro encontrado!');
+        } catch (\Throwable $th) {
+            return Response::error($th, $th->getMessage());
+        }
+    }
+
+    /**
+     * Retornando recurso específico
+     *
+     * @return \Repositories\Response
+     */
     public final function find($id)
     {
         try {
-            $finded = $this->class::find($id);
+            if (isset($this->with)) {
+                $this->class = $this->class::with($this->with);
+            }
+
+            $finded = gettype($this->class) == 'string' ? $this->class::find($id) : $this->class->find($id);
             return Response::success($finded, 'Registro encontrado!');
         } catch (\Throwable $th) {
             return Response::error($th, $th->getMessage());
         }
     }
 
+    /**
+     * Criando recurso
+     *
+     * @return \Repositories\Response
+     */
     public final function create($data)
     {
         $validator = Validator::make($data, $this->storeRules);
@@ -46,6 +89,11 @@ abstract class BaseRepository
         }
     }
 
+    /**
+     * Atualizando recurso
+     *
+     * @return \Repositories\Response
+     */
     public final function update($data, $id)
     {
         $updateRules = $this->updateRules ?? $this->storeRules;
@@ -64,13 +112,34 @@ abstract class BaseRepository
         }
     }
 
+    /**
+     * Removendo recurso
+     *
+     * @return \Repositories\Response
+     */
     public final function delete($id)
     {
         return $this->class::find($id)->delete();
     }
 
+    /**
+     * Setando regras para validação das requisições
+     *
+     * @return Repositories\Response
+     */
     protected final function setStoreRules($storeRules)
     {
         $this->storeRules = $storeRules;
+    }
+
+    /**
+     * Setando relacionamentos
+     *
+     * @return Repositories\Response
+     */
+    public final function with($with)
+    {
+        $this->with = $with;
+        return $this;
     }
 }
