@@ -42,3 +42,18 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+.container-app {
+  width: 100%;
+  height: calc(100vh - 56px);
+
+  overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container-app {
+    padding: 10px !important;
+  }
+}
+</style>
