@@ -1,16 +1,10 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
+import { customRoutes } from "./routes";
 
 Vue.use(VueRouter)
 
-const routes: Array<RouteConfig> = [
-  {
-    path: '/teste',
-    name: 'teste',
-    component: () => import('../views/Teste.vue')
-  },
-  { path: '', redirect: "/teste" }
-];
+const routes: Array<RouteConfig> = customRoutes;
 
 const router = new VueRouter({
   routes
